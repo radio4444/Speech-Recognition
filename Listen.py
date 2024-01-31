@@ -11,4 +11,10 @@ with harvard as source:  # read and store in source
 
 print(r.recognize_google(audio))
 
+with harvard as source:  # read and store in source
+	# duration(secs): stop the recording. Offset(sec): start the recording
+	audio = r.record(source, offset=4, duration=4)
+
+print(r.recognize_google(audio))
+
 
