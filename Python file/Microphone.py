@@ -3,10 +3,10 @@ import os
 
 
 # Read and save the audio file function
-def speech_to_text_file(file_name, mic_recording):
-	parent_directory = os.path.dirname('D:/Program/CS Lang IDE (PC)/PycharmProjects/Project/Speech-Recognition/')
+def STT_file(file_name, mic_recording):
+	current_directory = os.getcwd()
 	directory_name = "Speech to text file"
-	directory_path = os.path.join(parent_directory, directory_name)
+	directory_path = os.path.join(current_directory, '..', directory_name)
 	if not os.path.exists(directory_path):
 		os.makedirs(directory_path)
 		print(f"Directory '{directory_path}' created.")
@@ -27,7 +27,7 @@ try:
 		# r.adjust_for_ambient_noise(source)
 		audio = r.listen(source)
 
-	speech_to_text_file(user_file_name, r.recognize_google(audio))
+	STT_file(user_file_name, r.recognize_google(audio))
 except sr.UnknownValueError:
 	print("Speech Recognition could not understand audio")
 except Exception as e:
