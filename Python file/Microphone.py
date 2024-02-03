@@ -3,7 +3,7 @@ from RecordingTextFile import RecordingTextFile
 
 r = sr.Recognizer()
 mic = sr.Microphone()
-recording_file_object = RecordingTextFile()
+
 user_file_name = input("Enter the file name: ")
 try:
 	# Listen to the user through the mic
@@ -11,8 +11,7 @@ try:
 	with mic as source:
 		audio = r.listen(source)
 	# Save recording in text format file
-
-	recording_file_object.stt_file(user_file_name, r.recognize_google(audio))
+	recording_file_object = RecordingTextFile(user_file_name, r.recognize_google(audio))
 except sr.UnknownValueError:  # if the mic is not picking up any voice
 	print("Speech Recognition could not understand audio")
 except Exception as e:

@@ -4,8 +4,13 @@ import os
 class RecordingTextFile:
 
 	# Constructor method
-	def __init__(self, directory_name='speech to text'):
+	# def __init__(self, directory_name='speech to text'):
+	# 	self.directory_name = directory_name
+	# Use this, if: let the user create new file and then end the program
+
+	def __init__(self, file_name, mic_recording, directory_name='speech to text'):
 		self.directory_name = directory_name
+		self.stt_file(file_name, mic_recording)
 
 	# Create new directory
 
