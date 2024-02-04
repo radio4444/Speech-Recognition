@@ -17,12 +17,18 @@ def voice_prompt():
 		print(f"An unexpected error occurred: {e}")
 
 
-print("Say: Create file")
-response = voice_prompt()
-if response == 'create file':
-	user_filename = input("Enter file name: ")
-	# Save recording in text format file
-	RecordingTextFile(user_filename, voice_prompt())
-else:
-	print(f"This is what you said: {response}")
-input("Press Enter to exit...")
+# Close the program via voice-controlled
+while True:
+	print("Say: Create file")
+	# Listen to the user and store it in response
+	response = voice_prompt()
+	if response == 'create file':
+		user_filename = input("Enter file name: ")
+		# It will record the user voice convert into text and save it
+		RecordingTextFile(user_filename, voice_prompt())
+	else:
+		# If the user said other than "create file"
+		print(f"This is what you said: {response}")
+	print("Say: 'close the program' in order to exit out from the program")
+	if voice_prompt() == 'close the program':
+		break
