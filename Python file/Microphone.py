@@ -19,8 +19,17 @@ def rstt():
 
 r = sr.Recognizer()
 mic = sr.Microphone()
+# Listen to user and do the prompt the user tell to do
+try:
+	print("Say: Create file")
+	with mic as voice:
+		response = r.listen(voice)
+	response_recognize = r.recognize_google(response)
+	if response_recognize == 'create file':
+		rstt()
+except sr.UnknownValueError:
+	print("The mic is picking up your voice")
+except Exception as a:
+	print(f"This is an unexpected error {a}")
 
-user_option = input("Enter your choice: 1. Record my speech and store it: ")
-if user_option == '1':
-	rstt()
 input("Press Enter to exit...")
