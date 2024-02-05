@@ -8,7 +8,9 @@ class Information:
 
 	def search_web(self):
 		urls = []
-		for url in enumerate(search(self.words, stop=4), 1):
+		for url in search(self.words, stop=4):
 			urls.append(url)
-		return urls
+		print('\n'.join(urls))
+		user_input = int(input("Specify the link via number: "))
+		webbrowser.open(urls[user_input])
 
