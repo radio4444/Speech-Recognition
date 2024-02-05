@@ -1,5 +1,5 @@
 import speech_recognition as sr
-from RecordingTextFile import RecordingTextFile
+from recording_text_file import RecordingTextFile
 
 
 def voice_prompt():
@@ -28,6 +28,8 @@ while True:
 		user_filename = input("Enter file name: ")
 		# It will record the user voice convert into text and save it
 		RecordingTextFile(user_filename, voice_prompt())
+	elif response == 'Google search_via_google':
+		print("Search it, insert the function class")
 	else:
 		# If the user said other than "create file"
 		print(f"This is what you said: {response}")
