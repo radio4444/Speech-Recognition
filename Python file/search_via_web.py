@@ -1,10 +1,13 @@
 from googlesearch import search
 import webbrowser
+import testingMic
 
 
 class Information:
 	def __init__(self, words):
 		self.words = words
+
+	# self.search_this = response
 
 	def search_web(self):
 		new_results = 0
@@ -14,7 +17,9 @@ class Information:
 			for url in search(self.words, start=new_results, stop=4):
 				urls.append(url)  # store 4 urls via search method
 			print('\n'.join(urls))  # show the 4 url
-			user_input = input("Specify the link via number 0-3 or next or previous or exit: ")
+			print("Specify the link via number 0-3 or next or previous or exit: ")
+			user_input = testingMic.voice_prompt()
+
 			try:
 				# give new 4 urls
 				if user_input == 'next':

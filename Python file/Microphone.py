@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import recording_text_file
+import search_via_web
 
 
 def voice_prompt():
@@ -21,15 +22,19 @@ def voice_prompt():
 
 # Close the program via voice-controlled
 while True:
-	print("Say: Create file")
+	print("Say: Create file or Google search")  # check back later close the program in the beginning
 	# Listen to the user and store it in response
 	response = voice_prompt()
 	if response == 'create file':
 		user_filename = input("Enter file name: ")
 		# It will record the user voice convert into text and save it
 		recording_text_file.RecordingTextFile(user_filename, voice_prompt())
-	elif response == 'Google search_via_google':
-		print("Search it, insert the function class")
+	elif response == 'Google search':
+		# print("Search it, insert the function class")
+		# It will give 4 urls and open specify link via number. Next or previous.
+		print("Google search mode")
+		search_google = voice_prompt()
+		search_via_web.Information(search_google).search_web()
 	else:
 		# If the user said other than "create file"
 		print(f"This is what you said: {response}")
