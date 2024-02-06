@@ -1,8 +1,9 @@
 from googlesearch import search
 import webbrowser
+from microphone import voice_prompt
 
 
-class Information:
+class information:
 	def __init__(self, words):
 		self.words = words
 		self.new_results = 0
@@ -15,6 +16,9 @@ class Information:
 			self.urls.append(url)  # store 4 urls via search method
 		return self.urls  # show the 4 url
 
+	def __str__(self):
+		return '\n'.join(self.urls)
+
 	# Either generate new or go back to 4 urls. Or exit out. Or open up the link by indicating number.
 	def navigate_urls(self):
 
@@ -23,7 +27,7 @@ class Information:
 			# print 4 new urls
 			print('\n'.join(self.urls))
 			print("Specify the link via number 1-4 or next or previous or exit: ")
-			user_input = input()  # change to response
+			user_input = voice_prompt()
 
 			try:
 				# give new 4 urls
