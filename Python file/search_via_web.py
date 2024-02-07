@@ -7,34 +7,30 @@ class Information:
 	def __init__(self, words):
 		self.words = words
 		self.new_results = 0
-		self.urls = []
 		self.order = ['first', 'second', 'third', 'fourth']
 		self.urls_dict = {}
 
-	# Generate 4 new urls using the user phrase
-	def generate_urls(self):
-		self.urls = []
-		for url in search(self.words, start=self.new_results, stop=4):
-			self.urls.append(url)  # store 4 urls via search method
-		return self.urls  # show the 4 url
-
 	def generate_urls_dict(self):
 		self.urls_dict = {}
+		# generate 4 urls
 		urls_generator = search(self.words, start=self.new_results, stop=4)
+		# urls are assigned to keys and store in dictionary
 		self.urls_dict = dict(zip(self.order, urls_generator))
 		return self.urls_dict
 
 	def __str__(self):
-		return '\n'.join(self.urls)
+		return '\n'.join(self.urls_dict)
 
 	# Either generate new or go back to 4 urls. Or exit out. Or open up the link by indicating number.
 	def navigate_urls(self):
 
 		# Keep looping until the user input number for the url
 		while True:
-			# print 4 new urls
-			print('\n'.join(self.urls))
-			print("Specify the link via number 1-4 or next or previous or exit: ")
+			# printout the urls with keys
+			for key, value in self.urls_dict.items():
+				print(f'{key} : {value}')
+
+			print("Specify the link via first-fourth or next or previous or exit: ")
 			user_input = voice_prompt()
 
 			try:
@@ -43,7 +39,7 @@ class Information:
 					# increment start value in search function by 4
 					self.new_results += 4
 					# calling this method updated start value
-					self.generate_urls()
+					self.generate_urls_dict()
 				# show previous 4 urls
 				elif user_input == 'previous':
 					# decrement start value in search function by 4
@@ -52,12 +48,12 @@ class Information:
 						print(
 							"You cannot go back anymore. These are the first 4 urls")  # maybe remove the extra statement
 					# calling this method updated start value
-					self.generate_urls()
+					self.generate_urls_dict()
 				elif user_input == 'exit':
 					break
 				else:
 					# Open the url, the user has specified
-					webbrowser.open(self.urls[int(user_input) - 1])
+					webbrowser.open(self.urls_dict[user_input])
 					break
 			except Exception as e:
 				print("Invalid input. Please choose the correct response")

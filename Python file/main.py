@@ -17,7 +17,7 @@ while True:
 		# It will give 4 urls and open specify link via number. Next or previous.
 		print("Google search mode. Please tell what would you like to search:")
 		user_search = Information(voice_prompt())
-		user_search.generate_urls()
+		user_search.generate_urls_dict()
 		user_search.navigate_urls()
 		print("You have exited from google search mode")
 
