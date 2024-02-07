@@ -1,6 +1,6 @@
 from microphone import voice_prompt
 import recording_text_file
-from search_via_web import information
+from search_via_web import Information
 
 # Close the program via voice-controlled
 while True:
@@ -16,7 +16,7 @@ while True:
 		# print("Search it, insert the function class")
 		# It will give 4 urls and open specify link via number. Next or previous.
 		print("Google search mode. Please tell what would you like to search:")
-		user_search = information(voice_prompt())
+		user_search = Information(voice_prompt())
 		user_search.generate_urls()
 		user_search.navigate_urls()
 		print("You have exited from google search mode")

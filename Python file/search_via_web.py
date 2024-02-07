@@ -3,11 +3,13 @@ import webbrowser
 from microphone import voice_prompt
 
 
-class information:
+class Information:
 	def __init__(self, words):
 		self.words = words
 		self.new_results = 0
 		self.urls = []
+		self.order = ['first', 'second', 'third', 'fourth']
+		self.urls_dict = {}
 
 	# Generate 4 new urls using the user phrase
 	def generate_urls(self):
@@ -15,6 +17,12 @@ class information:
 		for url in search(self.words, start=self.new_results, stop=4):
 			self.urls.append(url)  # store 4 urls via search method
 		return self.urls  # show the 4 url
+
+	def generate_urls_dict(self):
+		self.urls_dict = {}
+		urls_generator = search(self.words, start=self.new_results, stop=4)
+		self.urls_dict = dict(zip(self.order, urls_generator))
+		return self.urls_dict
 
 	def __str__(self):
 		return '\n'.join(self.urls)
