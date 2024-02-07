@@ -4,7 +4,9 @@ from search_via_web import Information
 
 # Close the program via voice-controlled
 while True:
-	print("Say: Create file or Google search")  # check back later close the program in the beginning
+	print(
+		"Say: Create file or Google search or 'power off' in order to exit out from the program")
+	# check back later close the program in the beginning
 	# Listen to the user and store it in response
 	response = voice_prompt()
 	if response == 'create file':
@@ -21,9 +23,9 @@ while True:
 		user_search.navigate_urls()
 		print("You have exited from google search mode")
 
+	elif response == 'power off':
+		print("You have exited the program")
+		break
 	else:
 		# If the user said other than "create file"
 		print(f"This is what you said: {response}")
-	print("Say: 'close the program' in order to exit out from the program")
-	if voice_prompt() == 'close the program':
-		break
